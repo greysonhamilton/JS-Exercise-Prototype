@@ -100,7 +100,20 @@ console.log(lukas);
 
 function Car(model, milesPerGallon) {
 
-}
+  this.tank = 0;
+  this.odometer = 0;
+
+  Car.prototype.fill = function (gallons) {
+
+    this.tank = gallons;
+
+  }
+
+  // Car.prototype.drive = function (distance) {
+
+  // }
+
+};  const crv = new Car('CR-V', 28);
 
 /*
   TASK 3
@@ -109,7 +122,13 @@ function Car(model, milesPerGallon) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+  this.favoriteToy = "";
+
+}
+Baby.prototype.play = function () {
+
+  return `$Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`
 
 }
 
@@ -117,7 +136,7 @@ function Baby() {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
+  1. 'this' will appear on the left hand side of a 'dot' method.
   2. 
   3. 
   4. 
