@@ -122,11 +122,14 @@ function Car(model, milesPerGallon) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby(name, age, favoriteToy) {
-  this.favoriteToy = "";
 
-}
-Baby.prototype.play = function () {
+let thisBaby = function Baby(favoriteToy) {
+  Person.call(name, age);
+  Baby.favoriteToy = "";
+
+};
+
+Baby.prototype.play = function Baby(name, age, favoriteToy)  {
 
   return `$Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`
 
@@ -136,10 +139,11 @@ Baby.prototype.play = function () {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 'this' will appear on the left hand side of a 'dot' method.
-  2. 
-  3. 
-  4. 
+  1. 'this' will appear on the left hand side with a reference to an instance.
+  2. 'this' will refer to an object
+  3. 'this' is a reference, unless used within a 'constructor function' it will not reach out of it's scope.
+  It will reference within the 'constructor function'.
+  4. 'this' will alwas return 'undefined' within 'strict mode'. Strict mode requires precise code, so referencing the name of an object by using this within a function would not work. You would have to give the specific name of the object.
 */
 
 
