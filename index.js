@@ -99,19 +99,28 @@ console.log(lukas);
 */
 
 function Car(model, milesPerGallon) {
-
+  this.model = model;
   this.tank = 0;
+  this.milesPerGallon = milesPerGallon;
   this.odometer = 0;
 
   Car.prototype.fill = function (gallons) {
 
-    this.tank = gallons;
+    this.tank += gallons;
 
-  }
+  };
 
-  // Car.prototype.drive = function (distance) {
+  Car.prototype.drive = function (distance) {
+    this.odometer += distance;
+    this.tank -= distance/this.milesPerGallon;
 
-  // }
+    if ((this.tank * this.milesPerGallon) < distance) {
+
+      return 'I ran out of fuel at ${this.odometer} miles';
+
+    }
+
+  };
 
 };  const crv = new Car('CR-V', 28);
 
@@ -122,18 +131,21 @@ function Car(model, milesPerGallon) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
+function Baby (name, age, favoriteToy) {
 
-let thisBaby = function Baby(favoriteToy) {
-  Person.call(name, age);
-  Baby.favoriteToy = "";
+  Person.call(this, name, age);
 
-};
-
-Baby.prototype.play = function Baby(name, age, favoriteToy)  {
-
-  return `$Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`
+  this.favoriteToy = favoriteToy;
 
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+
+  return `Playing with ${this.favoriteToy}.`;
+    
+  };
 
 /* 
   TASK 4
@@ -143,7 +155,7 @@ Baby.prototype.play = function Baby(name, age, favoriteToy)  {
   2. 'this' will refer to an object
   3. 'this' is a reference, unless used within a 'constructor function' it will not reach out of it's scope.
   It will reference within the 'constructor function'.
-  4. 'this' will alwas return 'undefined' within 'strict mode'. Strict mode requires precise code, so referencing the name of an object by using this within a function would not work. You would have to give the specific name of the object.
+  4. 'this' will always return 'undefined' within 'strict mode'. Strict mode requires precise code, so referencing the name of an object by using this within a function would not work. You would have to give the specific name of the object.
 */
 
 
