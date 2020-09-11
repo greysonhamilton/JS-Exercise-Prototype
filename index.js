@@ -48,21 +48,17 @@ function Person(name, age) {
 
 Person.prototype.eat = function (someFood) {
 
-  for (let i = 0; i < 10; i++) {
+  if (this.stomach.length < 10) {
 
-    if (this.stomach[i] < 10) {
+    this.stomach = this.stomach.push[someFood];
 
-      this.stomach = this.stomach.push[someFood];
+  } else {
 
-    } else {
+    return `${this.name} is full and cannot eat any more. ${this.name} may need to use the restroom.`
 
-      return `${this.name} is full and cannot eat any more. ${this.name} may need to use the restroom.`
+  }
 
-    }
-
-  };
-
-}
+};
 
 Person.prototype.empty = function () {
   
@@ -112,11 +108,11 @@ function Car(model, milesPerGallon) {
 
   Car.prototype.drive = function (distance) {
     this.odometer += distance;
-    this.tank -= distance/this.milesPerGallon;
+    this.tank -= this.milesPerGallon/distance;
 
     if ((this.tank * this.milesPerGallon) < distance) {
 
-      return 'I ran out of fuel at ${this.odometer} miles';
+      return `I ran out of fuel at ${this.odometer} miles.`;
 
     }
 
